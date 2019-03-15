@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.signBox {
+    height: 400px;
+    width: 100%;
+    background: white;
+    -webkit-box-shadow: 2px 4px 17px 1px rgba(0,0,0,0.46);
+    -moz-box-shadow: 2px 4px 17px 1px rgba(0,0,0,0.46);
+    box-shadow: 1px 3px 6px 0px rgba(0,0,0,0.46);
+}
+.signImage {
+    background-image: url('/imgs/img1.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:inherit;
+}
+.form-control {
+    max-width: 90%;
+}
+.h4 {
+    margin-bottom: 60px;
+}
+.mt-4 {
+    margin-top: 15vh !important; ;
+}
+.signLeft a , .signLeft a:hover{
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+}
