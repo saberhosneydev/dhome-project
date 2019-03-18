@@ -6,7 +6,7 @@
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="/imgs/img1.jpg" class="d-block w-100" alt="/imgs/img1.jpg">
+					<img src="{{$home->image}}" class="d-block w-100" alt="/imgs/img1.jpg">
 				</div>
 				<div class="carousel-item">
 					<img src="/imgs/img1.jpg" class="d-block w-100" alt="/imgs/img1.jpg">
@@ -35,7 +35,7 @@
 		<i class="fas fa-map-marker-alt d-inline"></i>
 		<p class="h6 d-inline">{{ $home->city }}</p><br>
 		<i class="fas fa-map-marker-alt d-inline"></i>
-		{{-- <p class="h6 d-inline">{{ $home->user->name }}</p> --}}
+		<p class="h6 d-inline">{{ $home->user->name }}</p>
 		<p>
 			{{ $home->description }}
 		</p>
@@ -69,6 +69,8 @@
 		<p class="d-inline">FOR RENT</p>
 		<h3>${{$home->rentprice}}/mo</h3>
 		<hr>
+
+		@if(Auth::id() == $home->user->id)
 		<a href="/homes/{{ $home->slug }}/edit"><i class="fas fa-2x fa-pencil-alt text-dark"></i></a> 
 		<a href="/homes/{{ $home->slug }}/edit"><i class="fas fa-2x fa-heart text-dark"></i></a>
 		<form method="POST" action="/homes/{{ $home->slug }}/sold">
@@ -88,6 +90,9 @@
 			@endif
 		</form>
 		<hr>
+		@endif
+
+		
 	</div>
 	<div class="col-3">
 		<p>Contact Should be placed Here</p>

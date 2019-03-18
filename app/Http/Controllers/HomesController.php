@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Home;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class HomesController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+    
     /**
      * Display a listing of the resource.
      *
@@ -45,13 +52,15 @@ class HomesController extends Controller
             'saleprice' => 'required|integer'
         ]);
         Home::create([
+            'sold' => 0,
             'location' => $request->location,
             'city' => $request->city,
             'description' => $request->description,
             'image' => $request->image,
             'saleprice' => $request->saleprice,
             'rentprice' => $request->saleprice/180,
-            'slug' => Str::slug($request->city, '-').'-'.Str::slug($request->location, '-')
+            'slug' => Str::slug($request->city, '-').'-'.Str::slug($request->location, '-'),
+            'user_id' => auth()->id()
         ]);
         // $home = new Home;
         // $home->location = $request->location;

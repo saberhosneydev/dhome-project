@@ -11,7 +11,7 @@ class Home extends Model
 		return 'slug';
 	}
 	protected $fillable = [
-		'location','description','city','image','saleprice','slug','rentprice','sold'
+		'user_id','location','description','city','image','saleprice','slug','rentprice','sold'
 	];
 	public function  user() {
 		return $this->belongsTo(User::class);

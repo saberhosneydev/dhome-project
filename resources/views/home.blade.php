@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    {{ Auth::user()->homes->find(1)->id }}
                 </div>
             </div>
         </div>

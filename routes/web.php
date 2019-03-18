@@ -12,7 +12,10 @@
 */
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/test', 'PagesController@about')->name('about');
+Route::post('/test', 'PagesController@storeFile')->name('about.store');
 Route::resource('homes', 'HomesController');
-Route::patch('/homes/{home}/sold', 'HomesController@markSold');
+Route::get('homes/create', 'HomesController@create')->name('homes.create')->middleware('auth');
+Route::get('homes/{home}/edit', 'HomesController@edit')->name('homes.edit')->middleware('auth');
+Route::patch('/homes/{home}/sold', 'HomesController@markSold')->name('homes.sold')->middleware('auth');
 Auth::routes();
