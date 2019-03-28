@@ -14,7 +14,7 @@ class HomesController extends Controller
     // {
     //     $this->middleware('auth');
     // }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +74,7 @@ class HomesController extends Controller
         // $home->slug = Str::slug($request->location, '-');
         // $home->slug = Str::slug($request->city, '-').'-'.Str::slug($request->location, '-');
         // $home->save();
-        return redirect('/homes');
+        return redirect('/dashboard');
     }
 
     /**

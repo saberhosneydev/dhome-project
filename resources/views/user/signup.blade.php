@@ -13,9 +13,8 @@
                     <div class="col signImage"></div>
                     <div class="col-8 pl-5">
                         <p class="h4 mt-3">SignUp now? Nina</p>
-                        <form method="POST" action="/join/signup">
+                        <form method="POST" action="/register">
                             {{ csrf_field() }}
-                            <input type="hidden" name="tryinhard" value="bullshit">
                             <div class="form-group">
                                 <label for="exampleInputName1">Name</label>
                                 <input type="text" name="name" class="form-control" id="exampleInputName1" placeholder="Name">
@@ -29,8 +28,8 @@
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="/join/login">Already a user ? signIn instead.</a>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                            <a href="/login">Already a user ? signIn instead.</a>
                         </form>
                     </div>
                 </div>

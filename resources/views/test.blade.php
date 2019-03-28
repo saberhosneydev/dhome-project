@@ -10,4 +10,5 @@
     <button>Upload</button>
     {{ csrf_field() }}
 </form>
+<img src="{{ asset('/storage/'.$home->find(3)->images[0]->image_name)}}" alt="">
 @endsection

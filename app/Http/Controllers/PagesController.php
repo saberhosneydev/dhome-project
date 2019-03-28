@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Home;
+use App\Image;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use Illuminate\Http\File;	
 use Illuminate\Support\Facades\Storage;
 
 class PagesController extends Controller
@@ -14,8 +16,9 @@ class PagesController extends Controller
 	}
 
 	public function about() {
-		return view('test');
-	}   
+		$home = new Home;
+		return view('test', compact('home'));
+	}
 
 	public function storeFile(Request $request){
 		// validate the uploaded file
@@ -34,5 +37,12 @@ class PagesController extends Controller
 			// $filename  = 'profile-photo-' . time() . '.' . $extension;
     		$paths[]  = $file->store('photos');
     	}
+    	foreach ($paths as $path) {
+    		Image::create([
+    			'home_id' => 3,
+    			'image_name' => $path,
+    		]);
+    	}
+    	return redirect('/test');
     }
 }

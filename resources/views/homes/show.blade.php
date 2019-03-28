@@ -5,15 +5,11 @@
 	<div class="col">
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
+				@foreach($home->images as $image)
 				<div class="carousel-item active">
-					<img src="{{$home->image}}" class="d-block w-100" alt="/imgs/img1.jpg">
+					<img src="{{asset('/storage/'.$image->image_name)}}" class="d-block w-100" alt="/imgs/img1.jpg">
 				</div>
-				<div class="carousel-item">
-					<img src="/imgs/img1.jpg" class="d-block w-100" alt="/imgs/img1.jpg">
-				</div>
-				<div class="carousel-item">
-					<img src="/imgs/img1.jpg" class="d-block w-100" alt="/imgs/img1.jpg">
-				</div>
+				@endforeach
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -71,7 +67,7 @@
 		<hr>
 
 		@if(Auth::id() == $home->user->id)
-		<a href="/homes/{{ $home->slug }}/edit"><i class="fas fa-2x fa-pencil-alt text-dark"></i></a> 
+		<a href="/homes/{{ $home->slug }}/edit"><i class="fas fa-2x fa-pencil-alt text-dark"></i></a>
 		<a href="/homes/{{ $home->slug }}/edit"><i class="fas fa-2x fa-heart text-dark"></i></a>
 		<form method="POST" action="/homes/{{ $home->slug }}/sold">
 			{{ csrf_field() }}
@@ -81,7 +77,7 @@
 			<p class="h5 d-inline" style="font-size: 2em;color: #4dabf7;">SOLD</p>
 			@else
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="defaultCheck1" 
+				<input class="form-check-input" type="checkbox" id="defaultCheck1"
 				onchange="this.form.submit()">
 				<label class="form-check-label" for="defaultCheck1">
 					Sold ?
@@ -92,7 +88,7 @@
 		<hr>
 		@endif
 
-		
+
 	</div>
 	<div class="col-3">
 		<p>Contact Should be placed Here</p>
