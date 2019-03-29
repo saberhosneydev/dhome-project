@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Home;
-use Illuminate\Http\Request;
+use App\Image;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomesController extends Controller
@@ -48,20 +49,46 @@ class HomesController extends Controller
             'location' => 'required|min:15',
             'city' => 'required|min:4',
             'description' => 'required|min:50',
-            'image' => 'required',
             'saleprice' => 'required|integer'
         ]);
-        Home::create([
+        $validationFile = $request->validate([
+        'photo' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
+        ]);
+        $filePhoto = $validationFile['photo'];
+        $pathPhoto = $filePhoto->store('photos');
+        $result = Home::create([
+            'image' => "$pathPhoto",
             'sold' => 0,
             'location' => $request->location,
             'city' => $request->city,
             'description' => $request->description,
-            'image' => $request->image,
             'saleprice' => $request->saleprice,
             'rentprice' => $request->saleprice/180,
-            'slug' => Str::slug($request->city, '-').'-'.Str::slug($request->location, '-'),
+            'slug' => Str::slug($request->city, '-').'-'.Str::slug($request->location, '-').'-'.Str::slug(auth()->id()+1024),
             'user_id' => auth()->id()
         ]);
+        // validate the uploaded file
+        $validation = $request->validate([
+        // for single file upload
+        // 'photo' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
+        // for multiple file uploads
+            'photos.*' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
+        ]);
+        // store the uploaded file path/name || path/names
+        $paths = [];
+        $files  = $validation['photos']; // get the validated file
+        foreach ($files as $file) {
+            $extension = $file->getClientOriginalExtension();
+            // use below code if you want to customize file name , and make sure to change store method to storeAs and adding a second argument as $filename , note : $filename needs a tweaking since all files are uploaded at the same second so it overrides each others
+            // $filename  = 'profile-photo-' . time() . '.' . $extension;
+            $paths[]  = $file->store('photos');
+        }
+        foreach ($paths as $path) {
+            Image::create([
+                'home_id' => $result->id,
+                'image_name' => $path,
+            ]);
+        }
         // $home = new Home;
         // $home->location = $request->location;
         // $home->city = $request->city;

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col offset-3">
-        <form method="POST"action="/homes">
+        <form method="POST" enctype="multipart/form-data" action="/homes">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="homelocation">Home Location</label>
@@ -18,9 +18,15 @@
                 <textarea class="form-control {{ $errors->has('description') ? 'animated shake is-danger' : ''}}" name="description" id="homedesc" rows="3" placeholder="enter home description here">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="homeimage">Home Image</label>
-                <input type="text" class="form-control {{ $errors->has('image') ? 'animated shake is-danger' : ''}}" name="image" id="homeimage" aria-describedby="homeTitle" placeholder="Enter your home image" 
-                value="{{ old('image') }}">
+                <label for="photo">Choose your featured house image</label>
+                <input type="file" name="photo" id="photo">
+            </div>
+            <div class="form-group">
+                {{-- <label for="homeimage">Home Image</label>
+                <input type="text" class="form-control {{ $errors->has('image') ? 'animated shake is-danger' : ''}}" name="image" id="homeimage" aria-describedby="homeTitle" placeholder="Enter your home image"
+                value="{{ old('image') }}"> --}}
+                <label for="photos">Choose your house images</label><br>
+                <input type="file" name="photos[]" id="photos" multiple>
             </div>
             <div class="form-group">
                 <label for="homesprice">Sell price</label>
@@ -30,13 +36,13 @@
         </form>
         @if($errors->any())
         <div class="alert alert-danger" role="alert">
-           @foreach($errors->all() as $error)
-           {{ $error }}<br>
-           @endforeach
-       </div>
+         @foreach($errors->all() as $error)
+         {{ $error }}<br>
+         @endforeach
+     </div>
 
-       @endif
-   </div>
-   <div class="col-3"></div>
+     @endif
+ </div>
+ <div class="col-3"></div>
 </div>
 @endsection

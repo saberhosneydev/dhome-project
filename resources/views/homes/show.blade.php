@@ -5,8 +5,11 @@
 	<div class="col">
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
-				@foreach($home->images as $image)
 				<div class="carousel-item active">
+					<img src="{{asset('/storage/'.$home->image)}}" class="d-block w-100" alt="/imgs/img1.jpg">
+				</div>
+				@foreach($home->images as $image)
+				<div class="carousel-item">
 					<img src="{{asset('/storage/'.$image->image_name)}}" class="d-block w-100" alt="/imgs/img1.jpg">
 				</div>
 				@endforeach
@@ -20,6 +23,7 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+
 	</div>
 	<div class="col">
 		<div id='myMap'></div>

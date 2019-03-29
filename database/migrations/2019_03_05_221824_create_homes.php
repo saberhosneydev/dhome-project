@@ -19,10 +19,10 @@ class CreateHomes extends Migration
             $table->string('location');
             $table->string('city');
             $table->string('slug');
+            $table->string('image');
             $table->integer('saleprice');
             $table->integer('rentprice');
             $table->text('description');
-            $table->string('image');
             $table->boolean('sold');
             $table->timestamps();
         });
