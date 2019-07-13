@@ -1,0 +1,12 @@
+.jumbotron {
+    text-align: center;
+}
+.input-group {
+    width: 50%;
+}
+.card {
+    margin-bottom: 1.5rem  ;
+}
+.card-img-top {
+    height: 15rem;
+}
