@@ -14,3 +14,4 @@
 
 - Users Table : `php artisan db:seed --class=UsersTableSeeder` will generate 5 users .
 - Homes Table : `php artisan db:seed --class=HomesTableSeeder` will generate 20 Homes .
+- Create new admin using `php artisan make:admin` then follow the on-screen prompts
