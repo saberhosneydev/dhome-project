@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone_1')->nullable();
             $table->integer('phone_2')->nullable();
             $table->integer('ready')->nullable();
-            $table->string('role');
+            $table->string('is_admin');
             $table->rememberToken();
             $table->timestamps();
         });
