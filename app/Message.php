@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = ['homeID', 'customerID'];
+    protected $fillable = ['homeID', 'customerID', 'done'];
 
 }

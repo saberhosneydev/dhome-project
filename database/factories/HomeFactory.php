@@ -9,7 +9,7 @@ $factory->define(Home::class, function (Faker $faker) {
 	$location = $faker->address;
 	$city = $faker->city;
     return [
-        'user_id' => 53,
+        'user_id' => 61,
         'location' => $location,
         'city' => $city,
         'slug' => Str::slug($city, '-').'-'.Str::slug($location, '-').'-'.Str::slug(53+1024),

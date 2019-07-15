@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && $request->user()->role != "extremelybaka")
+        if (Auth::user() && !$request->user()->is_admin)
         {
             return new Response(view('unauthorized'));
 

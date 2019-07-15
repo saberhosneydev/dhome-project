@@ -144,7 +144,7 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 
 @yield('customJavaScript')

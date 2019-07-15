@@ -1,31 +1,33 @@
+<?php /* C:\Users\Saber\home\dhome-project\resources\views/raina.blade.php */ ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<title>Messages</title>
-	<link rel="stylesheet" href="{{ asset('/css/app3.css') }}">
+	<link rel="stylesheet" href="<?php echo e(asset('/css/app3.css')); ?>">
 </head>
 
 <body>
 
 	<div id="root">
+		
 		<div v-for="result in results" v-if="result.done == 0">
 			<p >
-			@{{result.home}}
+			{{result.home}}
 		</p>
 		<p>
-			@{{result.user}}
+			{{result.user}}
 		</p>
 		<p>
-			@{{result.done}}
+			{{result.done}}
 		</p>
 		</div>
 
 	</div>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src='{{ asset('/js/vue.js') }}'></script>
+	<script src='<?php echo e(asset('/js/vue.js')); ?>'></script>
 	<script>
 		const vm = new Vue({
 			el: '#root',

@@ -10,6 +10,7 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 
 class PagesController extends Controller
 {
@@ -23,28 +24,33 @@ class PagesController extends Controller
 		$user = Auth::user()->id;
 		Message::create([
 			'homeID' => $home->id,
-			'customerID' => $user
+			'customerID' => $user,
+			'done' => false
 		]);
 		return redirect('/homes/'.$request->homeSLUG)->with('message', 'Success');
 
 	}
-	public function getApp(){
+
+	public function getAppGet(){
+		return view('raina');
+	}
+	public function getAppPost(){
 		$messages = Message::all();
 		$home = Home::class;
 		$user = User::class;
-		// $msgs = array();
-		// foreach ($messages as $message) {
-		// 	$home = Home::where('id', $message->homeID)->get();
-		// 	$user = User::where('id', $message->customerID)->get();
-		// 	$msgs[$message->id]['home'] = $home;
-		// 	$msgs[$message->id]['user'] = $user;
-		// }
-		return view('raina', compact('messages', 'home', 'user'));
+		$msgs = array();
+		foreach ($messages as $message) {
+			$home = Home::where('id', $message->homeID)->get();
+			$user = User::where('id', $message->customerID)->get();
+			$msgs[$message->id]['home'] = $home;
+			$msgs[$message->id]['user'] = $user;
+			$msgs[$message->id]['done'] = $message->done;
+		}
+		return new Response($msgs);
 	}
 	public function search(Request $request) {
-$data=home::search($request->index)->get();
-return view("search",compact("data"));
+		$data=home::search($request->index)->get();
+		return view("search",compact("data"));
 	}
-
 }
 

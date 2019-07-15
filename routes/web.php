@@ -20,5 +20,6 @@ Route::get('homes/{home}/edit', 'HomesController@edit')->name('homes.edit')->mid
 Route::patch('/homes/{home}/sold', 'HomesController@markSold')->name('homes.sold')->middleware('auth');
 Auth::routes(['verify' => true]);
 Route::resource('/dashboard/account', 'UsersController');
-Route::get('/raina','PagesController@getApp')->name('getapplication')->middleware('admin');
+Route::get('/raina','PagesController@getAppGet')->name('getapplication.get')->middleware('admin');
+Route::get('/raina/messages','PagesController@getAppPost')->name('getapplication.post');
 Route::get('/search', 'PagesController@search')->name('search');

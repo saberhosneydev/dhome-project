@@ -148,7 +148,7 @@
         </div>
     </div>
 </div>
-<script src="<?php echo e(asset('js/jquery-3.3.1.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/bootstrap.bundle.js')); ?>"></script>
 
 <?php echo $__env->yieldContent('customJavaScript'); ?>

@@ -17,6 +17,7 @@ class CreateMessages extends Migration
             $table->bigIncrements('id');
             $table->string('homeID');
             $table->string('customerID');
+            $table->boolean('done');
             $table->timestamps();
         });
     }
