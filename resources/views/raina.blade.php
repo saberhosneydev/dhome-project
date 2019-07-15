@@ -11,11 +11,11 @@
 
 	<div id="root">
 		<div v-for="result in results" v-if="result.done == 0">
-			<p >
-			@{{result.home}}
+			<p v-for="home in result.home">
+			@{{home.location}}
 		</p>
-		<p>
-			@{{result.user}}
+		<p v-for="user in result.user">
+			@{{user.name}}
 		</p>
 		<p>
 			@{{result.done}}
@@ -24,7 +24,7 @@
 
 	</div>
 
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="{{ asset('/js/axios.min.js') }}"></script>
 	<script src='{{ asset('/js/vue.js') }}'></script>
 	<script>
 		const vm = new Vue({
